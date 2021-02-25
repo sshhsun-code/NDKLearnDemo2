@@ -1,6 +1,9 @@
 # For more information about using CMake with Android Studio, read the
 # documentation: https://d.android.com/studio/projects/add-native-code.html
 
+# 设置生成的so动态库最后输出的路径
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/src/main/jniLibss/${ANDROID_ABI})  #放在src下会有 'More than one file was found with OS independent path' 异常
+
 # Sets the minimum version of CMake required to build the native library.
 
 cmake_minimum_required(VERSION 3.4.1)

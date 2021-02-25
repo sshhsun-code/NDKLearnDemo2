@@ -4,34 +4,37 @@
 #include <jni.h>
 #include <string>
 
-extern "C" JNIEXPORT jstring JNICALL
+extern "C"
+{
+JNIEXPORT jstring JNICALL
 Java_demo_sunqi13_myapplication_MainActivity_stringFromJNI(
-        JNIEnv* env,
+        JNIEnv *env,
         jobject /* this */) {
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
 
-extern "C" JNIEXPORT jstring JNICALL
+JNIEXPORT jstring JNICALL
 Java_demo_sunqi13_myapplication_MediaUtils_play(
-        JNIEnv* env,
+        JNIEnv *env,
         jobject /* this */) {
     std::string status = "Media Play";
     return env->NewStringUTF(status.c_str());
 }
 
-extern "C" JNIEXPORT jstring JNICALL
+JNIEXPORT jstring JNICALL
 Java_demo_sunqi13_myapplication_MediaUtils_pause(
-        JNIEnv* env,
+        JNIEnv *env,
         jobject /* this */) {
     std::string status = "Media Pause";
     return env->NewStringUTF(status.c_str());
 }
 
-extern "C" JNIEXPORT jstring JNICALL
+JNIEXPORT jstring JNICALL
 Java_demo_sunqi13_myapplication_MediaUtils_stop(
-        JNIEnv* env,
+        JNIEnv *env,
         jobject /* this */) {
     std::string status = "Media Stop";
     return env->NewStringUTF(status.c_str());
+}
 }
