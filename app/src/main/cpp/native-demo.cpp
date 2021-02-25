@@ -3,13 +3,14 @@
 //
 #include <jni.h>
 #include <string>
+#include "TimeUtils.h"
 
 extern "C"
 {
 JNIEXPORT jstring JNICALL
 Java_demo_sunqi13_myapplication_MainActivity_stringFromJNI(
         JNIEnv *env,
-        jobject /* this */) {
+        jobject object /* this */) {
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
@@ -36,5 +37,12 @@ Java_demo_sunqi13_myapplication_MediaUtils_stop(
         jobject /* this */) {
     std::string status = "Media Stop";
     return env->NewStringUTF(status.c_str());
+}
+
+
+JNIEXPORT jint JNICALL
+Java_demo_sunqi13_myapplication_TimeUtils_getNum(
+        JNIEnv *env, jobject clazz, jint input) {
+    return 2 * input;
 }
 }

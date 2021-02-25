@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("sunqi_log", "MediaUtils : ${MediaUtils.play()}")
         Log.d("sunqi_log", "MediaUtils : ${MediaUtils.pause()}")
         Log.d("sunqi_log", "MediaUtils : ${MediaUtils.stop()}")
+        Log.d("sunqi_log", "TimeUtils getNum : ${TimeUtils().getNum(3)}")
     }
 
     // Used to load the 'native-lib' library on application startup.
