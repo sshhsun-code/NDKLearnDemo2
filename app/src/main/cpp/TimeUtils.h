@@ -15,6 +15,15 @@ extern "C" {
 JNIEXPORT jint JNICALL Java_demo_sunqi13_myapplication_TimeUtils_getNum
         (JNIEnv *, jobject clazz, jint art);
 
+
+/*
+ * Class:     demo_sunqi13_myapplication_TimeUtils
+ * Method:    getNum2
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_getNum2
+        (JNIEnv *, jobject, jint);
+
 #ifdef __cplusplus
 }
 #endif

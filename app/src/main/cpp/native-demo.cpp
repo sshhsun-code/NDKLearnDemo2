@@ -45,4 +45,9 @@ Java_demo_sunqi13_myapplication_TimeUtils_getNum(
         JNIEnv *env, jobject clazz, jint input) {
     return 2 * input;
 }
+
+JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_getNum2
+        (JNIEnv *, jobject, jint) {
+
+}
 }

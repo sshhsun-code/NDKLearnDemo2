@@ -5,4 +5,6 @@ package demo.sunqi13.myapplication;
  */
 class TimeUtils {
     public native int getNum(int input);
+
+    public native void getNum2(int input);
 }
