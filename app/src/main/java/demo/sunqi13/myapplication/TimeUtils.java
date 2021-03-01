@@ -17,4 +17,6 @@ class TimeUtils {
     static long  staticTestLongFiled = 16666;
     public native void testFiled();
 
+    public native void testNewObject();
+
 }

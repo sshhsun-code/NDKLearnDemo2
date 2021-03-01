@@ -54,11 +54,18 @@ JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_printEachChar
 
 /*
  * Class:     demo_sunqi13_myapplication_TimeUtils
- * Method:    printEachChar
- * Signature: (Ljava/lang/String;)V
+ * Method:    testFiled
  */
 JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_testFiled
         (JNIEnv *env, jobject);
+
+
+/*
+ * Class:     demo_sunqi13_myapplication_TimeUtils
+ * Method:    testNewObject
+ */
+JNIEXPORT void JNICALL
+Java_demo_sunqi13_myapplication_TimeUtils_testNewObject(JNIEnv *env, jobject thiz);
 
 #ifdef __cplusplus
 }
