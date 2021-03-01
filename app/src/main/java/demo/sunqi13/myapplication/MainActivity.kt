@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         TimeUtils().printEachChar("this is a test String")
         TimeUtils().testFiled()
         TimeUtils().testNewObject()
+
+        JniOnLoadTest().dynamicJavaFunc1()
+        JniOnLoadTest().dynamicJavaFunc2(18)
     }
 
     // Used to load the 'native-lib' library on application startup.

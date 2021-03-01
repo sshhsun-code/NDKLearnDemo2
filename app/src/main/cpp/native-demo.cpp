@@ -190,3 +190,45 @@ Java_demo_sunqi13_myapplication_TimeUtils_testNewObject(JNIEnv *env, jobject thi
 }
 
 }
+
+
+void dynamicNativeFunc1() {
+    LOGE("sunqi_log 调用了 dynamicJavaFunc1");
+}
+
+// 如果方法带有参数,前面要加上 JNIEnv *env, jobject thisz
+jint dynamicNativeFunc2(JNIEnv *env, jobject thisz, jint i) {
+    LOGE("sunqi_log 调用了 dynamicTest2，参数是:%d", i);
+    return 66;
+}
+
+static const JNINativeMethod methods[] = {
+        {"dynamicJavaFunc1", "()V",  (void *) dynamicNativeFunc1},
+        {"dynamicJavaFunc2", "(I)I", (int *) dynamicNativeFunc2},
+};
+
+static const char *mClassName = "demo/sunqi13/myapplication/JniOnLoadTest";
+
+jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+    JNIEnv *env = NULL;
+    // 1. 获取 JNIEnv，这个地方要注意第一个参数是个二级指针
+    int result = vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6);
+    // 2. 是否获取成功
+    if (result != JNI_OK) {
+        LOGE("sunqi_log 获取 env 失败");
+        return JNI_VERSION_1_6;
+    }
+    // 3. 注册方法
+    jclass javaCallClass = env->FindClass(mClassName);
+    // sizeof(methods)/ sizeof(JNINativeMethod)
+    result = env->RegisterNatives(javaCallClass, methods, 2);
+
+    if (result != JNI_OK) {
+        LOGE("sunqi_log 注册方法失败")
+        return JNI_VERSION_1_2;
+    }
+
+    return JNI_VERSION_1_6;
+}
+
+
