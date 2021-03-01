@@ -11,4 +11,10 @@ class TimeUtils {
     public native int getNum3(int[] input);
 
     public native void printEachChar(String input);
+
+    String testFiled = "this is a testFiled";
+    static int  staticTestFiled = 15;
+    static long  staticTestLongFiled = 16666;
+    public native void testFiled();
+
 }

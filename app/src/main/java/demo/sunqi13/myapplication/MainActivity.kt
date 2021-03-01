@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("sunqi_log", "TimeUtils getNum3 : ${TimeUtils().getNum3(array)}")
         Log.d("sunqi_log", "TimeUtils getNum3 : ${TimeUtils().getNum3(array1)}")
         TimeUtils().printEachChar("this is a test String")
+        TimeUtils().testFiled()
     }
 
     // Used to load the 'native-lib' library on application startup.

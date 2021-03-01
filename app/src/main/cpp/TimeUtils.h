@@ -52,6 +52,14 @@ JNIEXPORT jint JNICALL Java_demo_sunqi13_myapplication_TimeUtils_getNum3
 JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_printEachChar
         (JNIEnv *, jobject, jstring);
 
+/*
+ * Class:     demo_sunqi13_myapplication_TimeUtils
+ * Method:    printEachChar
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_testFiled
+        (JNIEnv *env, jobject);
+
 #ifdef __cplusplus
 }
 #endif

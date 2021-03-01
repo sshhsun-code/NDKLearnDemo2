@@ -106,11 +106,56 @@ JNIEXPORT void JNICALL Java_demo_sunqi13_myapplication_TimeUtils_printEachChar
     // 3.当做一个 char 数组打印
     jint length = env->GetStringLength(str);
     for (int i = 0; i < length; ++i) {
-        LOGE("sunqi_log Char at %d : %c",i, *(firstChar+i))
+        LOGE("sunqi_log Char at %d : %c", i, *(firstChar + i))
     }
 
     // 4.释放
-    env->ReleaseStringUTFChars(str,firstChar);
+    env->ReleaseStringUTFChars(str, firstChar);
 }
 
+
+/*
+ *
+操作 jobject
+c/c++ 操作 java 中的对象使用的是 java 中反射，步骤分为：
+- 获取 class 类
+- 根据成员变量名获取 methodID / fieldID
+- 调用 get/set 方法操作 field，或者 CallObjectMethod 调用 method
+
+操作 Field
+- 非静态成员变量使用: GetXXXField,比如 GetIntField，对于引用类型，比如 String，使用 GetObjectField
+- 对于静态成员变量使用: GetStaticXXXField,比如 GetStaticIntField
+
+ * */
+
+JNIEXPORT void JNICALL
+Java_demo_sunqi13_myapplication_TimeUtils_testFiled(JNIEnv *env, jobject thiz) {
+    LOGE("sunqi_log Java_demo_sunqi13_myapplication_TimeUtils_testFiled")
+    jclass  clazz = env->GetObjectClass(thiz);
+
+    jfieldID  strFieldId = env->GetFieldID(clazz, "testFiled", "Ljava/lang/String;");
+    jstring javaStrFile = static_cast<jstring>(env->GetObjectField(thiz, strFieldId));
+    const  char* cStr = env->GetStringUTFChars(javaStrFile, NULL);
+    LOGE("sunqi_log 获取 String field ：%s",cStr)
+
+    jstring newValue = env->NewStringUTF("新的字符创");
+    env-> SetObjectField(thiz,strFieldId,newValue);
+    jstring javaStrFile2 = static_cast<jstring>(env->GetObjectField(thiz, strFieldId));
+    const  char* cStr2 = env->GetStringUTFChars(javaStrFile2, NULL);
+    LOGE("sunqi_log 反射修改后，获取 String field ：%s",cStr2)
+
+    env->ReleaseStringUTFChars(javaStrFile, cStr);
+    env->ReleaseStringUTFChars(javaStrFile2, cStr2);
+    env->DeleteLocalRef(newValue);
+
+    jfieldID  staticFieldId = env->GetStaticFieldID(clazz, "staticTestFiled", "I");
+    jint  staticIntFile = env->GetStaticIntField(clazz, staticFieldId);
+    LOGE("sunqi_log 获取 static field ：%d", staticIntFile)
+
+    jfieldID  staticLongFieldId = env->GetStaticFieldID(clazz, "staticTestLongFiled", "J");
+    jlong staticLongFile = env->GetStaticLongField(clazz, staticLongFieldId);
+    LOGE("sunqi_log 获取 staticLongFile  ：%ld", staticLongFile)
+
+    env->DeleteLocalRef(clazz);
+}
 }
