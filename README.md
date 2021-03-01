@@ -14,3 +14,5 @@ C++ NDK JNI Learn
 - [Android Developers-NDK-指南-JNI 提示](https://developer.android.com/training/articles/perf-jni)
 - [Android - JNI 开发你所需要知道的基础
 ](https://juejin.cn/post/6844904192780271630#heading-7)
+- [【Android 系统开发】Android JNI 之 JNIEnv 解析
+](https://blog.csdn.net/shulianghan/article/details/38012515)
