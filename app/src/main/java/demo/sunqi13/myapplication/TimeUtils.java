@@ -7,4 +7,8 @@ class TimeUtils {
     public native int getNum(int input);
 
     public native void getNum2(int input);
+
+    public native int getNum3(int[] input);
+
+    public native void printEachChar(String input);
 }
